@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { adminGetDraws, adminSimulateDraw, adminPublishDraw } from '../../services/api';
 import toast from 'react-hot-toast';
-import { FiPlay, FiSend, FiRefreshCw } from 'react-icons/fi';
+import { FiSend, FiRefreshCw } from 'react-icons/fi';
 
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
@@ -31,7 +31,7 @@ const AdminDrawsPage = () => {
     e.preventDefault();
     setSimulating(true);
     try {
-      const { data } = await adminSimulateDraw(simForm);
+      await adminSimulateDraw(simForm);
       toast.success(`Draw simulated for ${MONTHS[simForm.month - 1]} ${simForm.year}`);
       fetchDraws();
     } catch (err) {

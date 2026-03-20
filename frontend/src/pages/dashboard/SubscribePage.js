@@ -31,16 +31,12 @@ const SubscribePage = () => {
   const { user, isSubscribed } = useAuth();
   const [subscription, setSubscription] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [subLoading, setSubLoading] = useState(true);
 
   useEffect(() => {
     if (isSubscribed) {
       getSubscription()
         .then(r => setSubscription(r.data.subscription))
-        .catch(() => {})
-        .finally(() => setSubLoading(false));
-    } else {
-      setSubLoading(false);
+        .catch(() => {});
     }
   }, [isSubscribed]);
 
